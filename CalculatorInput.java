@@ -29,8 +29,17 @@ public class CalculatorInput {
 					engine.divide();
 				else if(c>='0' && c<='9')
 					engine.digit(c-'0');
-				else if(c=='=')
-					engine.compute();
+				else if(c=='='){
+					try{
+						engine.compute();	
+					}
+					catch(DivideByZeroException e){
+						System.out.println(e.toString());
+						engine.clear();
+					}
+				}
+					
+					
 				else if(c=='c' || c=='C')
 					engine.clear();
 			}

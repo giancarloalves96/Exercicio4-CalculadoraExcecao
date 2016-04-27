@@ -26,7 +26,7 @@ public class CalculatorEngine {
 		binaryOperation('/');
 	}
 	
-	void compute(){
+	void compute() throws DivideByZeroException{
 		if(toDo=='+')
 			value = keep+value;
 		else if(toDo=='-')
@@ -34,7 +34,12 @@ public class CalculatorEngine {
 		else if(toDo=='*')
 			value = keep*value;
 		else if(toDo=='/')
-			value = keep/value;
+		{
+			if(value!=0)
+				value = keep/value;
+			else throw new DivideByZeroException();
+		}
+			
 		keep = 0;
 	}
 	
